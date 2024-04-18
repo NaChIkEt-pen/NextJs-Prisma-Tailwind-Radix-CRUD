@@ -2,7 +2,7 @@
 
 import styles from "./page.module.css";
 
-import MyTable from "@/components/Table";
+import MyTable from "../components/Table";
 
 const data = [
   { FullName: "Value 1", Email: "Value 2", Group: "Value 3" },
