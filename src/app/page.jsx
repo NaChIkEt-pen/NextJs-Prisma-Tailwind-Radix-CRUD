@@ -10,6 +10,7 @@ export default function Home() {
   return (
     <div className={styles.mainDiv}>
       <MyTable data={data} />
+      <h1>hello</h1>
     </div>
   );
 }
