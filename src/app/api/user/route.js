@@ -21,3 +21,13 @@ export async function POST(req) {
 
 }
 
+export async function GET() {
+    try {
+        const data = await prisma.user.findMany();
+        return NextResponse.json(data);
+    } catch(error) {
+        console.error("Error Fetching users", error);
+        return NextResponse.error("Intenal Server errr", 500);
+    }
+}
+
