@@ -1,4 +1,4 @@
-"use client";
+// "use client";
 import { useState, useEffect } from "react";
 
 import { TextField } from "@radix-ui/themes";
@@ -28,20 +28,21 @@ const CreateComponent = () => {
 
   const createRecord = async () => {
     console.log(inputValues);
-    // try {
-    //   await prisma.User.create({
-    //     data: {
-    //       email: inputValues.email,
-    //       name: inputValues.name,
-    //       group: inputValues.group,
-    //     },
-    //   });
-    // } catch (error) {
-    //   console.error(error);
-    //   return {
-    //     message: "Failed to Push Record",
-    //   };
-    // }
+    try {
+      const response = await fetch("/api/user", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(inputValues),
+      });
+      if (!response.ok) {
+        return alert("Unable to create a record");
+      }
+      document.location.reload();
+    } catch (error) {
+      console.error(error);
+    }
   };
   return (
     <>
